@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 925061286}
   - component: {fileID: 925061285}
   m_Layer: 0
-  m_Name: House 3 Front Body Parts_0
+  m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -395,10 +395,9 @@ GameObject:
   - component: {fileID: 1984336101}
   - component: {fileID: 1984336100}
   - component: {fileID: 1984336104}
-  - component: {fileID: 1984336102}
   - component: {fileID: 1984336103}
   m_Layer: 0
-  m_Name: Doors and Windows_27
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -483,15 +482,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591d609c5f77de54486e7ca2f5d7e065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   _renderer: {fileID: 1984336098}
+  _enterColor: {r: 0, g: 0, b: 0, a: 0}
   _exitColor: {r: 1, g: 1, b: 1, a: 1}
-  _reached:
+  _reachedEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1984336102}
-        m_TargetAssemblyTypeName: TargetColorSetter, Assembly-CSharp
-        m_MethodName: Change
+      - m_Target: {fileID: 1984336104}
+        m_TargetAssemblyTypeName: Alarm, Assembly-CSharp
+        m_MethodName: VolumeUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -501,9 +500,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1984336103}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+  _reachedExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1984336104}
+        m_TargetAssemblyTypeName: Alarm, Assembly-CSharp
+        m_MethodName: VolumeDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -539,20 +541,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.71, y: 1.65}
   m_EdgeRadius: 0
---- !u!114 &1984336102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984336097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 363d535a5f904c54a9be3e8b3ccc6038, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderer: {fileID: 1984336098}
-  _targetColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!82 &1984336103
 AudioSource:
   m_ObjectHideFlags: 0
@@ -656,12 +644,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984336097}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75ed1912c2888e14faf113c667f8fe79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 5
 --- !u!1 &2023699632
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,7 +662,7 @@ GameObject:
   - component: {fileID: 2023699634}
   - component: {fileID: 2023699633}
   m_Layer: 0
-  m_Name: Static Sprite
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
