@@ -9,22 +9,24 @@ public class EnemyInstantiate : MonoBehaviour
     public GameObject Template;
     private Transform[] _points;
 
-    void Start()
+    private void Start()
     {
-        _points = new Transform[_path.childCount];
-
-        for(int i = 0; i < _path.childCount; i++) 
-        {
-            _points[i] = _path.GetChild(i);
-            GameObject newObject = Instantiate(Template, new Vector3(0,0,0), Quaternion.identity);
-            Transform newObjectTransform = newObject.GetComponent<Transform>();
-            newObjectTransform.position = _points[i].position;
-        }
+        var addEnemyJob = StartCoroutine(AddEnemy());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator AddEnemy()
     {
-        
+        _points = new Transform[_path.childCount];
+        var waitForTwoSeconds = new WaitForSeconds(2);
+
+        for (int i = 0; i < _path.childCount; i++)
+        {
+            _points[i] = _path.GetChild(i);
+            GameObject newObject = Instantiate(Template, new Vector3(0, 0, 0), Quaternion.identity);
+            Transform newObjectTransform = newObject.GetComponent<Transform>();
+            newObjectTransform.position = _points[i].position;
+
+            yield return waitForTwoSeconds;
+        }
     }
 }
